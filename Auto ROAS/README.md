@@ -6,7 +6,7 @@ This script automatically sets the ROAS (Return on Ad Spend) targets of your Goo
 2. Click on the "Tools & Settings" icon in the top right corner.
 3. Click on "Scripts" under the "Bulk Actions" section.
 4. Click on the "+" icon to create a new script.
-5. Copy and paste the script into the editor. (File extensions should be .gs, not .js, js is for JavaScript syntax highlighting)
+5. Copy and paste the scripts into the editor. (File extensions should be .gs, not .js, js is for JavaScript syntax highlighting)
 6. Click on the floppy disk icon to save the script.
 7. Click on the "Run" icon to execute the script.
 8. You can schedule the script to run automatically by clicking on the "Schedule" icon.
