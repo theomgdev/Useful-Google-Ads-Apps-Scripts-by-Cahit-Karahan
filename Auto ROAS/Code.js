@@ -10,7 +10,9 @@ function main() {
     var budget = campaign.getBudget().getAmount();
     var autoFactor = cost / budget;
 
-    Logger.log('Cost: ' + cost + ' / Budget: ' + budget + ' = Autofactor: ' + autoFactor);
+    if (CONFIG.logChanges) {
+      Logger.log('Cost: ' + cost + ' / Budget: ' + budget + ' = Autofactor: ' + autoFactor);
+    }
     
     try {
       var roasTarget = getRoasTarget(campaign);
