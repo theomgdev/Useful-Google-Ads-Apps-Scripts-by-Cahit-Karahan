@@ -16,10 +16,11 @@ function main() {
       var roasTarget = getRoasTarget(campaign);
       var newRoasTarget = roasTarget;
       
-      if (cost >= budget) {
-        newRoasTarget *= CONFIG.enableAutoFactor ? autoFactor : CONFIG.increaseFactor;
-      } else if (cost < budget) {
-        newRoasTarget *= CONFIG.enableAutoFactor ? autoFactor : CONFIG.decreaseFactor;
+      // If autoFactor is enabled, clamp the factor between minFactor and maxFactor
+      if (CONFIG.enableAutoFactor) {
+        newRoasTarget = Math.min(CONFIG.maxFactor, Math.max(CONFIG.minFactor, autoFactor)) * roasTarget;
+      } else {
+        newRoasTarget = cost >= budget ? roasTarget * CONFIG.increaseFactor : roasTarget * CONFIG.decreaseFactor;
       }
       
       if (newRoasTarget !== roasTarget) {

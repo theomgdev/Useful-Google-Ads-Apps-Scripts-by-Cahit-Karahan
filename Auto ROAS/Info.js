@@ -1,31 +1,22 @@
-// Copyright 2021, Cahit Karahan Inc. All Rights Reserved.
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-//     http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
+/* This script automatically sets the ROAS (Return on Ad Spend) targets of your Google Ads campaigns. This is done by checking the expenses and budget of a particular campaign and calculating an "autoFactor" based on these values.
 
-/**
- * @name Cahit Karahan Ads Scripts - ROAS Optimizer
- *
- * @overview Bu script, Cahit Karahan Ads kampanyalarınızın ROAS hedeflerini otomatik olarak
- *     ayarlar. Günlük bütçe aşıldığında ROAS hedefini %1 arttırır, harcanamadığında ise
- *     %1 azaltır. Daha fazla bilgi ve detaylı kullanım için
- *     https://developers.cksoftware.com/cksoftware-ads/scripts/docs/examples/roas-optimizer adresini ziyaret edin.
- *
- * @author Cahit Karahan Ads Scripts Team [adwords-scripts@cksoftwaregroups.com]
- *
- * @version 1.0
- *
- * @changelog
- * - version 1.0
- *   - Yeni Cahit Karahan Ads script özellikleri ile güncellendi.
- *   - ROAS hedeflerini otomatik olarak ayarlayan ilk sürüm.
- */
+How does it work
+The script retrieves all active campaigns and performs the following actions for each one:
+
+Gets yesterday's stats for the campaign and gets the expenses and budget.
+It calculates an "autoFactor" based on these values.
+Retrieves the campaign's current ROAS target.
+Calculates a new ROAS target. This depends on whether autoFactor is enabled and whether expenses exceed the budget.
+If the new ROAS target is different from the existing target, it sets the campaign's ROAS target to the new target and logs the change.
+Configuration
+The script uses the following configuration parameters:
+
+increaseFactor: The rate at which the ROAS target increases when expenses exceed the budget.
+decreaseFactor: The rate at which the ROAS target is reduced when expenses do not exceed budget.
+enableAutoFactor: Specifies whether AutoFactor is enabled or not.
+maxFactor: Rate at which ROAS target increases if AutoFactor is used.
+minFactor: Rate of reducing ROAS target if AutoFactor is used.
+logChanges: Specifies whether changes will be logged or not.
+strategyTypes: Bidding strategy types to which the script is valid.
+Error Management
+If an error occurs when the script attempts to get or set a campaign's ROAS target, it logs the error and moves on to the next campaign. */
