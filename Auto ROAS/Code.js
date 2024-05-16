@@ -45,6 +45,9 @@ function getRoasTarget(campaign) {
   if (CONFIG.strategyTypes.indexOf(biddingType) >= 0 && campaignBidding.getTargetRoas() != null) {
     return campaignBidding.getTargetRoas();
   } else {
+    if (CONFIG.logChanges) {
+      Logger.log(campaign.getName() + ' atlandı. (' + biddingType + ')');
+    }
     throw new Error('ROAS hedefli teklif verme stratejisi yok.');
   }
 }
