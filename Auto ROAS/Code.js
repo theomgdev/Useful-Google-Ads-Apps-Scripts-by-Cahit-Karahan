@@ -4,6 +4,7 @@ function main() {
     .get();
 
   var performanceMaxCampaigns = AdsApp.performanceMaxCampaigns()
+    .withCondition('Status = ENABLED')
     .get();
   
   while (campaigns.hasNext() || performanceMaxCampaigns.hasNext()) {
