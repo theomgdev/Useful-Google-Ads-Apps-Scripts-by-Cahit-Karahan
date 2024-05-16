@@ -2,9 +2,12 @@ function main() {
   var campaigns = AdsApp.campaigns()
     .withCondition('Status = ENABLED')
     .get();
+
+  var performanceMaxCampaigns = AdsApp.performanceMaxCampaigns()
+    .get();
   
-  while (campaigns.hasNext()) {
-    var campaign = campaigns.next();
+  while (campaigns.hasNext() || performanceMaxCampaigns.hasNext()) {
+    var campaign = campaigns.hasNext() ? campaigns.next() : performanceMaxCampaigns.next();
     var stats = campaign.getStatsFor('YESTERDAY');
     var cost = stats.getCost();
     var budget = campaign.getBudget().getAmount();
